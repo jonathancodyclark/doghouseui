@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+.mainheader {
+    background-color: rgb(78,130,177);
+    position: fixed;
+    margin-top: -20px;
+    margin-left: -2vw;
+    width: 104vw;
+    height: 140px;
+    z-index: 999;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.logophoto {
+    max-height: 93%;
+    position:absolute;
+    top:8%;
+    left:45vw;
+}
+
+nav {
+    position: absolute;
+    text-align: left;
+    top: 100%; /*the nav list is 100% below*/
+    left: 0;
+    width: 100%; 
+    background:  rgb(78,130,177);
+    transform: scale(1,0);
+    transform-origin: top;
+    transition: ease-in-out 400ms;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    margin-bottom: 1%; /*space between each list element*/
+    margin-left: 5vw; /*space from each list element to margin on left*/
+}
+
+nav a {
+    color:white;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: 'Exo 2', sans-serif;
+    text-transform: uppercase; 
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+    color:black;
+}
+
+/* display nav block when nav-toggle checked
+-the check box has a label called nav toggle label
+-so even when the check box is not displayed, it gets checked when we press the label
+*/
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle:checked ~ nav {
+    transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 5vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display:block;
+    background: white;
+    height:4px; /*thickness of each span*/
+    width: 36px; /*length of each span*/
+    border-radius: 4px; /*how far to round off the edges*/
+    position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before {
+    bottom: 8px; /*space between each span and span::before*/
+}
+.nav-toggle-label span::after {
+    top: 8px; /*space between each span and span::after*/
+}
+
+/*screen is between 700px and 920px*/
+@media screen and (min-width:700px) and (max-width:920px){
+    .nav-toggle-label {
+        display:none;
+    }
+
+    .mainheader {
+        display: grid;
+        grid-template-columns: 1fr 60px minmax(350px, 4fr) 1fr;
+    }
+
+    .logophoto {
+        grid-column: 1 / 2;
+        left:5vw;
+    }
+
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav li {
+        margin-left: 5vw;
+        margin-bottom: 0;
+    }
+
+    nav a {
+        opacity: 1;
+        position: relative;
+        font-size:24px;
+    }
+    
+    nav a::before {
+        content: '';
+        display: block;
+        height: 5px;
+        background: black;
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: scale(0,1);
+        transition: transform ease-in-out 250ms;
+    }
+
+    nav a:hover::before {
+        transform: scale(1,1);
+    }
+}
+
+/*When the screen is over 920px wide */
+@media screen and (min-width:920px) {
+    .nav-toggle-label {
+        display:none;
+    }
+
+    .mainheader {
+        display: grid;
+        grid-template-columns: 1fr 1fr minmax(225px, 6fr) 1fr;
+    }
+
+    .logophoto {
+        grid-column: 2 / 3;
+        left:5vw;
+    }
+
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav li {
+        margin-left: 5vw;
+        margin-bottom: 0;
+    }
+
+    nav a {
+        opacity: 1;
+        position: relative;
+        font-size:30px;
+    }
+
+    nav a::before {
+        content: '';
+        display: block;
+        height: 5px;
+        background: black;
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: scale(0,1);
+        transition: transform ease-in-out 250ms;
+    }
+
+    nav a:hover::before {
+        transform: scale(1,1);
+    }
+}
